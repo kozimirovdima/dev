@@ -1,10 +1,10 @@
 // lesson02
-title = "Название проекта";
-screens = "Простые, Сложные, Интерактивные";
-screenPrice = 300;
-rollback = 5;
-fullPrice = 5000;
-adaptive = true;
+let title = "Название проекта";
+let screens = "Простые, Сложные, Интерактивные";
+let screenPrice = 300;
+let rollback = 5;
+let fullPrice = 5000;
+let adaptive = true;
 
 // Вывести в консоль тип данных значений переменных title, fullPrice, adaptive;
 
