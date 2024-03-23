@@ -1,32 +1,51 @@
-// lesson02
-let title = "Название проекта";
-let screens = "Простые, Сложные, Интерактивные";
-let screenPrice = 300;
-let rollback = 5;
-let fullPrice = 5000;
-let adaptive = true;
+// lesson03
 
-// Вывести в консоль тип данных значений переменных title, fullPrice, adaptive;
+// 3) Спрашиваем у пользователя “Как называется ваш проект?” и результат сохраняем в переменную title
+let title = prompt("Как называется ваш проект?");
+console.log(title);
 
-console.log("typeof title ", typeof title);
-console.log("typeof fullPrice ", typeof fullPrice);
-console.log("typeof adaptive ", typeof adaptive);
-
-// Вывести в консоль длину строки из переменной screens
-
-console.log("длина строки переменной screens ", screens.length);
-
-// Вывести в консоль “Стоимость верстки экранов (screenPrice) рублей/ долларов/гривен/юани” и “Стоимость разработки сайта (fullPrice) рублей/ долларов/гривен/юани”
-
-console.log("Стоимость верстки в рублях", screenPrice);
-console.log("“Стоимость разработки сайта в рублях", fullPrice);
-
-// Привести строку screens к нижнему регистру и разбить строку на массив, вывести массив в консоль
-
-console.log(screens.toLocaleLowerCase()); // 1 Привести строку screens к нижнему регистру
-console.log(screens.split(", ")); // 2 разбить строку на массив, вывести массив в консоль
-// Вывести в консоль Процент отката посреднику за работу (fullPrice * (rollback/100))
-console.log(
-  "Процент отката посреднику за работу",
-  fullPrice * (rollback / 100)
+// 4) Спросить у пользователя “Какие типы экранов нужно разработать?” сохранить в переменную screens (пример: "Простые, Сложные, Интерактивные")
+let screens = prompt(
+  "Какие типы экранов нужно разработать?",
+  'пример: "Простые, Сложные, Интерактивные"'
 );
+console.log(screens);
+
+// 5) Спросить у пользователя “Сколько будет стоить данная работа?” и сохранить в переменную screenPrice (пример: 12000)
+let screenPrice = parseInt(
+  prompt("Сколько будет стоить данная работа?", "12000")
+);
+console.log(screenPrice);
+
+let rollBack = Math.floor(Math.random() * 101);
+let fullPrice = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
+// 6) Спросить у пользователя “Нужен ли адаптив на сайте?” и сохранить данные в переменной adaptive (булево значение true/false)
+let adaptive = confirm("Нужен ли адаптив на сайте?");
+console.log(adaptive);
+
+// 7) Спросить у пользователя по 2 раза каждый вопрос и записать ответы в разные переменные 1. “Какой дополнительный тип услуги нужен?” (например service1, service2) 2. “Сколько это будет стоить?” (например servicePrice1, servicePrice2) в итоге 4 вопроса и 4 разные переменных, вопросы задаются в такой последовательности Название - Стоимость - Название - Стоимость
+let service1 = prompt("Какая дополнительная услуга нужна?");
+let servicePrice1 = +prompt("Цена " + service1 + "?");
+
+let service2 = prompt("Какая еще дополнительная услуга нужна?");
+let servicePrice2 = +prompt("Вторая цена " + service2 + "?");
+
+// 8) Вычислить итоговую стоимость работы учитывая стоимость верстки экранов и дополнительных услуг (screenPrice + servicePrice1 + servicePrice2) и результат занести в переменную fullPrice
+fullPrice = screenPrice + servicePrice1 + servicePrice2;
+
+// 9) Объявить переменную servicePercentPrice и занести в нее итоговую стоимость за вычетом отката посреднику (servicePercentPrice = fullPrice - Откат посреднику), округлив результат в большую сторону (методы объекта Math в помощь). Вывести servicePercentPrice в консоль.
+
+let servicePercentPrice = Math.ceil((fullPrice - rollBack) / 1000) * 1000;
+
+console.log("Стоимость за вычетом отката посреднику ", servicePercentPrice);
+
+// 10) Написать конструкцию условий (расчеты приведены в рублях) (вывести в консоль)
+if (fullPrice > 30000) {
+  console.log("Даем скидку в 10%");
+} else if (fullPrice > 15000 && fullPrice < 30000) {
+  console.log("Даем скидку в 5%");
+} else if (fullPrice < 15000 && fullPrice > 0) {
+  console.log("Скидка не предусмотрена");
+} else if (fullPrice < 0) {
+  console.log("Что то пошло не так");
+}
