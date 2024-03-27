@@ -1,16 +1,30 @@
 "use strict";
-let title = prompt("Как называется ваш проект?");
-let screens = prompt("Какие типы экранов нужно разработать?");
-let screenPrice = +prompt("Сколько будет стоить данная работа?");
-let adaptive = confirm("Нужен ли адаптив на сайте?");
-let service1 = prompt("Какой дополнительный тип услуги нужен?");
-let servicePrice1 = +prompt("Сколько будет стоить " + service1 + "?");
-let service2 = prompt("Может быть еще какая-то услуга нужна будет?");
-let servicePrice2 = +prompt("Сколько будет стоить " + service2 + "?");
+let title;
+let screens;
+let screenPrice;
+let adaptive;
+let service1;
+let service2;
 let rollBack = 10;
 let fullPrice;
 let allServicePrices;
 let servicePercentPrice;
+
+// console.log("      ".trim().length); игрался с кодом
+// console.log(!isNaN(parseFloat("10")) && isFinite("10")); проверка на число
+const isNumber = function (num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
+};
+
+const asking = function () {
+  title = prompt("Как называется ваш проект?", "Калькулятор верстки");
+  screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные");
+  screenPrice = prompt("Сколько будет стоить данная работа?");
+  while (!isNumber(screenPrice)) {
+    screenPrice = prompt("Сколько будет стоить данная работа?");
+  }
+  adaptive = confirm("Нужен ли адаптив на сайте?");
+};
 
 const showTypeOf = function (v) {
   console.log(v, typeof v);
@@ -30,7 +44,17 @@ const getRollBackMessage = function (price) {
 
 // 4 урок
 const getAllServicePrices = function () {
-  return servicePrice1 + servicePrice2;
+  // return servicePrice1 + servicePrice2;
+  let sum = 0;
+  for (let i = 0; i < 2; i++) {
+    if (i === 0) {
+      service1 = prompt("Какой дополнительный тип услуги нужен?");
+    } else if (i === 1) {
+      service2 = prompt("Может быть еще какая-то услуга нужна будет?");
+    }
+    sum += +prompt("Сколько это будет стоить?");
+  }
+  return sum;
 };
 
 function getFullPrice() {
@@ -45,7 +69,7 @@ const getTitle = function () {
 const getServicePercentPrices = function () {
   return fullPrice - fullPrice * (rollBack / 100);
 };
-
+asking();
 showTypeOf(title);
 showTypeOf(screenPrice);
 showTypeOf(adaptive);
@@ -53,6 +77,8 @@ showTypeOf(adaptive);
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice();
 servicePercentPrice = getServicePercentPrices();
+
+console.log("allServicePrices", allServicePrices);
 
 console.log(servicePercentPrice);
 console.log(getTitle());
