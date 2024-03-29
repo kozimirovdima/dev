@@ -11,18 +11,18 @@ let allServicePrices;
 let servicePercentPrice;
 
 // console.log("      ".trim().length); игрался с кодом
-// console.log(!isNaN(parseFloat("10")) && isFinite("10")); проверка на число
+// console.log(!isNaN(parseInt("10")) && isFinite("10")); // проверка на число
 const isNumber = function (num) {
-  return !isNaN(parseFloat(num)) && isFinite(num);
+  return !isNaN(parseFloat(num)) && isFinite(num); // проверка на число если не isNan и число с плавающей точкей и не является бесконечностью
 };
 
 const asking = function () {
   title = prompt("Как называется ваш проект?", "Калькулятор верстки");
   screens = prompt("Какие типы экранов нужно разработать?", "Простые, Сложные");
-  screenPrice = prompt("Сколько будет стоить данная работа?");
-  while (!isNumber(screenPrice)) {
+  do {
     screenPrice = prompt("Сколько будет стоить данная работа?");
-  }
+  } while (!isNumber(screenPrice));
+  screenPrice = +screenPrice;
   adaptive = confirm("Нужен ли адаптив на сайте?");
 };
 
@@ -48,9 +48,12 @@ const getAllServicePrices = function () {
   let sum = 0;
   for (let i = 0; i < 2; i++) {
     if (i === 0) {
-      service1 = prompt("Какой дополнительный тип услуги нужен?");
+      service1 = prompt("Какой дополнительный тип услуги нужен?", "Метрика");
     } else if (i === 1) {
-      service2 = prompt("Может быть еще какая-то услуга нужна будет?");
+      service2 = prompt(
+        "Может быть еще какая-то услуга нужна будет?",
+        "Установка карты"
+      );
     }
     sum += +prompt("Сколько это будет стоить?");
   }
