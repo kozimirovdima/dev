@@ -11,14 +11,20 @@ const appData = {
   services: {},
   asking: function () {
     this.title = prompt("Как называется ваш проект?", "Калькулятор верстки");
-    // this.screens = prompt("Какие типы экранов нужно разработать?", "Простые");
-    // do {
-    //   this.screenPrice = prompt("Сколько будет стоить данная работа?", "20000");
-    // } while (!this.isNumber(this.screenPrice));
+    while (!this.isString(this.title)) {
+      this.title = prompt(
+        "Как называется ваш проект? (используйте буквы не используйте цифры)"
+      );
+    }
 
     for (let i = 0; i < 2; i++) {
       let name = prompt("Какие типы экранов нужно разработать?");
       let price = 0;
+      while (!this.isString(name)) {
+        name = prompt(
+          "Какие типы экранов нужно разработать? (используйте буквы не используйте цифры)"
+        );
+      }
       do {
         price = prompt("Сколько будет стоить данная работа?", "20000");
       } while (!this.isNumber(price));
@@ -29,14 +35,21 @@ const appData = {
     for (let i = 0; i < 2; i++) {
       let name = prompt("Какой дополнительный вид услуги нужен?");
       let servicePrice;
-
+      while (!this.isString(name)) {
+        name = prompt(
+          "Какой дополнительный вид услуги нужен? (используйте буквы не используйте цифры)"
+        );
+      }
       do {
         servicePrice = prompt("Сколько будет стоить данная работа?", "2000");
       } while (!appData.isNumber(servicePrice));
 
       this.services[name] = +servicePrice;
     }
-
+    // for (let key in appData) {
+    //   console.log(key.(0, 2));
+    // }
+    // игрался с методами для объектов
     this.adaptive = confirm("Нужен ли адаптив на сайте?");
   },
   addPrices: function () {
@@ -51,7 +64,9 @@ const appData = {
   isNumber: function (num) {
     return !isNaN(parseInt(num)) && isFinite(num);
   },
-
+  isString: function (text) {
+    return typeof text === "string" && isNaN(text);
+  },
   getAllServicePrices: function () {
     // let sum = 0;
     // this.allServicePrices = sum;
