@@ -21,22 +21,13 @@ buttonsArray.forEach(function (button) {
 // Получаем кнопку "+"
 let addButton = document.querySelector(".screen-btn");
 // Выводим текст кнопки в консоль для проверки
-console.log(addButton.innerText);
+console.log(addButton);
 
 // задание 4
 // Получаем элементы с классом "other-items" и "percent"
 let itemsWithPercent = document.querySelectorAll(".other-items.percent");
 // Получаем элементы с классом "other-items" и "number"
 let itemsWithNumber = document.querySelectorAll(".other-items.number");
-// Выводим элементы в консоль для проверки
-console.log("Элементы с классом 'percent':");
-itemsWithPercent.forEach(function (item) {
-  console.log(item.textContent);
-});
-console.log("Элементы с классом 'number':");
-itemsWithNumber.forEach(function (item) {
-  console.log(item.textContent);
-});
 
 // задание 5
 // Получаем input типа range через его родителя с классом "rollback"
@@ -53,19 +44,16 @@ console.log(rangeValueSpan);
 // Задание 7
 // Получаем коллекцию элементов с классом "total-input"
 let inputsCollection = document.getElementsByClassName("total-input");
-// Создаем пустой массив для хранения элементов
-let inputsArray = [];
-// Преобразуем коллекцию в массив
-for (let i = 0; i < inputsCollection.length; i++) {
-  inputsArray.push(inputsCollection[i]);
-}
-// Выводим массив элементов в консоль для проверки
-console.log(inputsArray);
-
+console.dir(inputsCollection);
+console.log(inputsCollection[0]);
+console.log(inputsCollection[1]);
+console.log(inputsCollection[2]);
+console.log(inputsCollection[3]);
+console.log(inputsCollection[4]);
 // задание 8
 // Изменяемая переменная, в которой будут храниться блоки с классом "screen"
 let screenBlocks = document.querySelectorAll(".screen");
 // Выводим полученные блоки в консоль для проверки
-console.log(screenBlocks);
-
+console.dir(screenBlocks);
+console.log(screenBlocks[0]);
 // Конец 9 урока
