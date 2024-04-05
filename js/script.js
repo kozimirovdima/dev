@@ -40,12 +40,16 @@ console.log(rangeValueSpan);
 
 // Задание 7
 // Получаем коллекцию элементов с классом "total-input"
-const inputsCollection = document.getElementsByClassName("total-input");
-console.log(inputsCollection[0]);
-console.log(inputsCollection[1]);
-console.log(inputsCollection[2]);
-console.log(inputsCollection[3]);
-console.log(inputsCollection[4]);
+const totalInput = document.getElementsByClassName("total-input")[0];
+const totalCount = document.getElementsByClassName("total-input")[1];
+const totalCountOther = document.getElementsByClassName("total-input")[2];
+const totalFullCount = document.getElementsByClassName("total-input")[3];
+const totalCountRollback = document.getElementsByClassName("total-input")[4];
+console.log(totalInput);
+console.log(totalCount);
+console.log(totalCountOther);
+console.log(totalFullCount);
+console.log(totalCountRollback);
 // задание 8
 // Изменяемая переменная, в которой будут храниться блоки с классом "screen"
 const screenBlocks = document.querySelectorAll(".screen");
